@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Login Page</title>
+
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+         <style>
+            h2{
+                align:centre;
+                colour:red;
+         </style>
+    </head>
+
+    <body>
+
+
+    <br><br><br>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul class=flashes>
+        {% for message in messages %}
+        <div class="container">
+            <div class="alert alert-info" id="userlaert">
+                <strong>{{ message }}</strong>
+            </div>
+        </div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+
+
+
+
+        <h2>Login form</h2>
+        <form  method="post" action="/home">
+            <div>
+                <label for="uname">username</label>
+                <input type="text" placeholder="Enter username" name="uname" required><br>
+
+                <label for="psw">password</label>
+                <input type="password" placeholder="Enter password" name="psw" required> <br>
+
+                <button type="submit">LOGIN</button>
+                <p>New user?<button type="button" onclick="myFunction()"><b>Sign up</b></button></p>
+
+            </div>
+        </form>
+
+    </body>
+
+
+<script>
+
+
+    $('#userlaert').hide();
+
+    function myFunction() {
+        var base_url = window.location.origin;
+        base_url = base_url + "/" + "signup"
+        location.replace(base_url)
+    }
+
+
+</script>
+
+
+
+</html>
